@@ -1,0 +1,52 @@
+{
+  "name": "r3r_gallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=dev webpack-dev-server --watch-poll --host 0.0.0.0 --port 3000 --inline --hot --progress --colors --config webpack.config.dev.babel.js",
+    "build": "NODE_ENV=production webpack --progress --colors --config webpack.config.build.babel.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yuki Kobayashi",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.8.5",
+    "glslify-import-loader": "^0.1.1",
+    "glslify-loader": "^1.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "minimist": "^1.2.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-rc.4",
+    "pug-loader": "^2.3.0",
+    "raw-loader": "^0.5.1",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
+    "react-redux": "^4.4.1",
+    "react-three-renderer": "^3.2.1",
+    "redux": "^3.7.2",
+    "shader-loader": "^1.3.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "dependencies": {
+    "three": "^0.87.1"
+  }
+}
