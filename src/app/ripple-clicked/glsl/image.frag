@@ -18,7 +18,7 @@ void main() {
 	float dist = distance(uv, departure);
 
 	if ( (dist <= (elapsed + waveLengthOffset)) && (dist >= (elapsed - waveLengthOffset)) ) {
-		float diff = (elapsed - dist);
+		float diff = abs(elapsed - dist);
 		float powDiff = 1.0 - pow((diff*10.0), amplitude);
 
 		float diffTime = diff * powDiff;
