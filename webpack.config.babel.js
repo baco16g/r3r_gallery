@@ -15,7 +15,7 @@ export default {
 		'pages/infinitedTube': path.resolve(__dirname, `${config.dirs.src}/app/infinitedTube/index.js`),
 		'pages/timeMachine': path.resolve(__dirname, `${config.dirs.src}/app/timeMachine/index.js`),
 		'pages/ripple': path.resolve(__dirname, `${config.dirs.src}/app/ripple/index.js`),
-		'pages/ripple-clicked': path.resolve(__dirname, `${config.dirs.src}/app/ripple-clicked/index.js`),
+		'pages/ripple-clickable': path.resolve(__dirname, `${config.dirs.src}/app/ripple-clickable/index.js`),
 		'vendor': ['three'],
 	},
 
@@ -124,10 +124,10 @@ export default {
 			chunksSortMode: 'auto',
 		}),
 		new HtmlWebpackPlugin({
-			title: 'ripple-clicked',
-			filename: 'ripple-clicked/index.html',
-			template: 'pug/ripple-clicked/index.pug',
-			chunks: ['vendor', 'pages/ripple-clicked'],
+			title: 'ripple-clickable',
+			filename: 'ripple-clickable/index.html',
+			template: 'pug/ripple-clickable/index.pug',
+			chunks: ['vendor', 'pages/ripple-clickable'],
 			chunksSortMode: 'auto',
 		}),
 		new ExtractTextPlugin('assets/css/[name].css'),
