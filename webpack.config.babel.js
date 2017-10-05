@@ -14,7 +14,7 @@ export default {
 	entry: {
 		'pages/infinitedTube': path.resolve(__dirname, `${config.dirs.src}/app/infinitedTube/index.js`),
 		'pages/timeMachine': path.resolve(__dirname, `${config.dirs.src}/app/timeMachine/index.js`),
-		'pages/fluid': path.resolve(__dirname, `${config.dirs.src}/app/fluid/index.js`),
+		'pages/waterColor': path.resolve(__dirname, `${config.dirs.src}/app/waterColor/index.js`),
 		'pages/ripple': path.resolve(__dirname, `${config.dirs.src}/app/ripple/index.js`),
 		'pages/ripple-clickable': path.resolve(__dirname, `${config.dirs.src}/app/ripple-clickable/index.js`),
 		'vendor': ['three'],
@@ -118,10 +118,10 @@ export default {
 			chunksSortMode: 'auto',
 		}),
 		new HtmlWebpackPlugin({
-			title: 'fluid',
-			filename: 'fluid/index.html',
-			template: 'pug/fluid/index.pug',
-			chunks: ['vendor', 'pages/fluid'],
+			title: 'waterColor',
+			filename: 'waterColor/index.html',
+			template: 'pug/waterColor/index.pug',
+			chunks: ['vendor', 'pages/waterColor'],
 			chunksSortMode: 'auto',
 		}),
 		new HtmlWebpackPlugin({

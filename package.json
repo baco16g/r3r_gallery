@@ -47,6 +47,7 @@
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
+    "glsl-noise": "^0.0.0",
     "three": "^0.87.1"
   }
 }
