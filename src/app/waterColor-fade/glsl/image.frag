@@ -41,9 +41,9 @@ float noise (in vec2 st) {
 
 void main(){
 
-  float sefloat = 1.0 - min(time * 0.3, 1.0);
+  float sefloat = 1.0 - min(time * 0.2, 1.0);
   vec2 sevec2 = vec2(1.0) - vec2(min(time * 0.5, 1.0));
-  vec3 sevec3 = vec3(1.0) - vec3(min(time * 0.4, 1.0));
+  vec3 sevec3 = vec3(min(time * 0.4, 1.0));
 
 	float gradientStep = pow(sefloat, time) * 0.02; // default .0015, min -1., max 1.
 	float advectStep = pow(sefloat, time) * 0.02; // default .0015, min -1., max 1.
@@ -68,7 +68,7 @@ void main(){
 
 	vec3 baseColor = texture2D(colorMap, newtc).rgb * vcolor.rgb;
 
-  gl_FragColor.rgb = baseColor + sevec3;
+  gl_FragColor.rgb = baseColor * sevec3;
 
 	gl_FragColor.a = vcolor.a;
 }
