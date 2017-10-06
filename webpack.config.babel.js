@@ -15,6 +15,7 @@ export default {
 		'pages/infinitedTube': path.resolve(__dirname, `${config.dirs.src}/app/infinitedTube/index.js`),
 		'pages/timeMachine': path.resolve(__dirname, `${config.dirs.src}/app/timeMachine/index.js`),
 		'pages/waterColor': path.resolve(__dirname, `${config.dirs.src}/app/waterColor/index.js`),
+		'pages/waterColor-fade': path.resolve(__dirname, `${config.dirs.src}/app/waterColor-fade/index.js`),
 		'pages/ripple': path.resolve(__dirname, `${config.dirs.src}/app/ripple/index.js`),
 		'pages/ripple-clickable': path.resolve(__dirname, `${config.dirs.src}/app/ripple-clickable/index.js`),
 		'vendor': ['three'],
@@ -122,6 +123,13 @@ export default {
 			filename: 'waterColor/index.html',
 			template: 'pug/waterColor/index.pug',
 			chunks: ['vendor', 'pages/waterColor'],
+			chunksSortMode: 'auto',
+		}),
+		new HtmlWebpackPlugin({
+			title: 'waterColor-fade',
+			filename: 'waterColor-fade/index.html',
+			template: 'pug/waterColor-fade/index.pug',
+			chunks: ['vendor', 'pages/waterColor-fade'],
 			chunksSortMode: 'auto',
 		}),
 		new HtmlWebpackPlugin({
