@@ -45,8 +45,8 @@ void main(){
   vec2 sevec2 = vec2(1.0) - vec2(min(time * 0.5, 1.0));
   vec3 sevec3 = vec3(min(time * 0.4, 1.0));
 
-	float gradientStep = pow(sefloat, time) * 0.02; // default .0015, min -1., max 1.
-	float advectStep = pow(sefloat, time) * 0.02; // default .0015, min -1., max 1.
+	float gradientStep = pow(sefloat, time) * 0.025; // default .0015, min -1., max 1.
+	float advectStep = pow(sefloat, time) * 0.025; // default .0015, min -1., max 1.
 	float flipHeightMap = 0.7; // default 0.7, min 0., max 2.
 	float expand = 1.0;// abs(cos(time * 0.01)); // default 0., min 0., max 1.
 
