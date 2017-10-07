@@ -16,14 +16,11 @@ class Image extends React.Component {
 		this.onResize = ::this.props.onResize
 		this.onUpdateTime = ::this.props.onUpdateTime
 		this.onMoveMouse = ::this.props.onMoveMouse
-		// this.onResetTime = ::this.props.onResetTime
-		// this.onClickMesh = ::this.props.onClickMesh
-
 		this.textures = {
 			"main": {
 				url: "../assets/img/waterColor/fukyowaon.jpg"
 			},
-			"gray": {
+			"noise": {
 				url: "../assets/img/waterColor/noise.png"
 			}
 		}
@@ -42,22 +39,6 @@ class Image extends React.Component {
 			}, 300)
 		})
 	}
-	//
-	// componentDidUpdate(newProps) {
-	// 	const {
-	// 		mouseInput,
-	// 	} = this.refs;
-	//
-	// 	const {
-	// 		windowWidth,
-	// 		windowHeight,
-	// 	} = this.props;
-	//
-	// 	if (windowWidth !== newProps.windowWidth || windowHeight !== newProps.windowHeight) {
-	// 		mouseInput.containerResized();
-	// 	}
-	// }
-
 
 	/* custom Function  */
 
@@ -69,24 +50,6 @@ class Image extends React.Component {
 		});
 	}
 
-	// setMouseInput() {
-	// 	const {
-	// 		mouseInput,
-	// 		container
-	// 	} = this.refs;
-	//
-	// 	if (!mouseInput.isReady()) {
-	// 		const {
-	// 			scene,
-	// 			camera,
-	// 		} = this.refs;
-	//
-	// 		mouseInput.ready(scene, container, camera);
-	// 		// mouseInput.restrictIntersections(imageMesh);
-	// 		mouseInput.setActive(false);
-	// 	}
-	// }
-
 	handleResize() {
 		window.addEventListener('resize', this.onResize, false)
 	}
@@ -95,10 +58,6 @@ class Image extends React.Component {
 		window.addEventListener('mousemove', this.onMoveMouse, false)
 		}
 
-	// handleClick(e) {
-	// 	this.onResetTime()
-	// 	this.onClickMesh(e)
-	// }
 
 	handleAnimate() {
 		this.onUpdateTime()
@@ -130,17 +89,10 @@ class Image extends React.Component {
 					clearColor={0xffffff}
 					antialias={true}
 				>
-					{/* <module
-						ref="mouseInput"
-						descriptor={MouseInput}
-					/> */}
 					<scene
 						ref="scene"
-						// fog={new THREE.Fog(0x222222, 0.6, 2.8)}
 					>
 
-						{/* Helper */}
-						{/* <axisHelper /> */}
 
 						{/* Camera */}
 						<perspectiveCamera
@@ -164,22 +116,9 @@ class Image extends React.Component {
 							intensity={0.8}
 						/>
 
-						{/* helper Mesh*/}
-						{/* <mesh>
-								<boxGeometry
-								width={1}
-								height={1}
-								depth={1}
-							/>
-							<meshBasicMaterial
-								color={0xeeeeee}
-							/>
-						</mesh> */}
-
 						{/* Image Mesh */}
 						<mesh
 							ref='imageMesh'
-							// onClick={(e) => this.handleClick(e)}
 						>
 							<planeGeometry
 								width={1}
@@ -193,7 +132,7 @@ class Image extends React.Component {
 							>
 								<uniforms>
 									<uniform name={'colorMap'} type={'t'} value={this.textures['main'].texture} />
-									<uniform name={'heightMap'} type={'t'} value={this.textures['gray'].texture} />
+									<uniform name={'noiseMap'} type={'t'} value={this.textures['noise'].texture} />
 									<uniform name={'time'} type={'f'} value={elapsed} />
 									<uniform name={'scroll'} type={'f'} value={scroll} />
 									<uniform name={'duration'} type={'f'} value={duration} />

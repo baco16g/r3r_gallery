@@ -3,7 +3,6 @@ import Image from '../components/Image'
 
 import {resizeWindow} from '../actions/resizeWindow'
 import {updateTime, resetTime} from '../actions/time'
-import {clickMesh} from '../actions/clickMesh'
 import {moveMouse} from '../actions/moveMouse'
 import {loading, loaded} from '../actions/load'
 
@@ -18,7 +17,6 @@ const mapStateToProps = (state) => {
 		cameraPosition: state.camera.position,
 		elapsed: state.time.elapsed,
 		duration: state.time.duration,
-		// pointerPosition: state.pointer.position,
 		mouse: state.mouse.target,
 	}
 }
@@ -42,9 +40,6 @@ const mapDispatchToProps = (dispatch) => {
 		onResetTime: () => {
 			dispatch(resetTime())
 		},
-		// onClickMesh: (e) => {
-		// 	dispatch(clickMesh(e))
-		// },
 		onMoveMouse: (e) => {
 			dispatch(moveMouse(e))
 		},

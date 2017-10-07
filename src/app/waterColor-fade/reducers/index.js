@@ -14,7 +14,6 @@ export default combineReducers({
   camera,
   time,
   mouse,
-  // pointer,
   resolution,
   image,
 })
