@@ -2,8 +2,7 @@ import { connect } from 'react-redux'
 import Image from '../components/Image'
 
 import {resizeWindow} from '../actions/resizeWindow'
-import {updateTime, resetTime} from '../actions/time'
-import {moveMouse} from '../actions/moveMouse'
+import {playTime, rewindTime} from '../actions/time'
 import {loading, loaded} from '../actions/load'
 
 const mapStateToProps = (state) => {
@@ -17,7 +16,6 @@ const mapStateToProps = (state) => {
 		cameraPosition: state.camera.position,
 		elapsed: state.time.elapsed,
 		duration: state.time.duration,
-		mouse: state.mouse.target,
 	}
 }
 
@@ -34,14 +32,11 @@ const mapDispatchToProps = (dispatch) => {
 		onResize: (e) => {
 			dispatch(resizeWindow(e))
 		},
-		onUpdateTime: () => {
-			dispatch(updateTime())
+		onPlayTime: () => {
+			dispatch(playTime())
 		},
-		onResetTime: () => {
-			dispatch(resetTime())
-		},
-		onMoveMouse: (e) => {
-			dispatch(moveMouse(e))
+		onRewindTime: () => {
+			dispatch(rewindTime())
 		},
 	}
 }

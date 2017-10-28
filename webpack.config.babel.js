@@ -75,12 +75,11 @@ export default {
 			{
 				test: /\.(jpe*g|png|gif)$/,
 				use: [
-				  'file-loader?name=[name].[ext]&outputPath=assets/img/&publicPath=img/',
+				  'file-loader?name=[name].[ext]&outputPath=assets/img/&publicPath=assets/img/',
 				  {
 					loader: 'image-webpack-loader',
 					query: {
 					  progressive: true,
-					  optimizationLevel: 7,
 					  interlaced: false,
 					  pngquant: {
 						quality: '65-90',
@@ -146,6 +145,6 @@ export default {
 			chunks: ['vendor', 'pages/ripple-clickable'],
 			chunksSortMode: 'auto',
 		}),
-		new ExtractTextPlugin('assets/css/[name].css'),
+		new ExtractTextPlugin('assets/css/style.css'),
 	],
 }

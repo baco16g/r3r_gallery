@@ -1,13 +1,13 @@
 import Types from '../constants/actiontypes'
 
-export const updateTime = () => {
+export const playTime = () => {
 	return {
-		type: Types.UPDATE_TIME,
+		type: Types.PLAY_TIME,
 	}
 }
 
-export const resetTime = () => {
+export const rewindTime = () => {
 	return {
-		type: Types.RESET_TIME,
+		type: Types.REWIND_TIME,
 	}
 }

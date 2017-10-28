@@ -3,16 +3,17 @@ varying vec4 vcolor;
 
 uniform sampler2D colorMap;
 uniform sampler2D noiseMap;
-uniform float time;
+uniform float elapsed;
+uniform float duration;
 
 void main(){
 
-  float sefloat = 1.0 - min(exp(time * 0.6) * 0.5, 1.0);
-  vec2 sevec2 = vec2(min(time * 0.8, 1.0));
-  vec3 sevec3 = vec3(min(time * 0.8, 1.0));
+  float sefloat = duration - min(exp(elapsed) * 0.3, duration);
+  vec2 sevec2 = vec2(min(exp(elapsed) * 0.3, duration));
+  vec3 sevec3 = 2.0 - vec3(min(exp(elapsed * 2.0) , 2.0));
 
-	float gradientStep = pow(sefloat, time) * 0.05;
-	float advectStep = pow(sefloat, time) * 0.05;
+	float gradientStep = sefloat * 0.03;
+	float advectStep = sefloat * 0.03;
 	float flipHeightMap = 1.0;
 	float expand = 1.0;
 
@@ -34,7 +35,7 @@ void main(){
 
 	vec3 baseColor = texture2D(colorMap, newtc).rgb * vcolor.rgb;
 
-  gl_FragColor.rgb = baseColor * sevec3;
+  gl_FragColor.rgb = baseColor;
 
 	gl_FragColor.a = vcolor.a;
 }

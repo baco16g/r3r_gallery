@@ -2,6 +2,7 @@ import Types from '../constants/actiontypes'
 
 const image = (
 	state = {
+		// maxNoise: 0.5,
 	}, action) => {
 
 	switch(action.type) {

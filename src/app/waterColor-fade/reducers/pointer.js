@@ -8,6 +8,7 @@ const pointer = (
 	switch(action.type) {
 		case Types.CLICK_MESH:
 			let rect = action.e.target.getBoundingClientRect();
+			console.log(rect);
 			return Object.assign({}, state, {
 				position: new THREE.Vector2(
 					(action.e.clientX - rect.left) / action.e.target.width,

@@ -11,14 +11,17 @@ class Image extends React.Component {
 	constructor(props) {
 		super(props)
 
+		this.flagEnter = false
+
 		this.onLoading = ::this.props.onLoading
 		this.onLoaded = ::this.props.onLoaded
 		this.onResize = ::this.props.onResize
-		this.onUpdateTime = ::this.props.onUpdateTime
-		this.onMoveMouse = ::this.props.onMoveMouse
+		this.onPlayTime = ::this.props.onPlayTime
+		this.onRewindTime = ::this.props.onRewindTime
+
 		this.textures = {
 			"main": {
-				url: "../assets/img/waterColor/fukyowaon.jpg"
+				url: "../assets/img/waterColor/model_02.jpg"
 			},
 			"noise": {
 				url: "../assets/img/waterColor/noise.png"
@@ -32,13 +35,29 @@ class Image extends React.Component {
 		this.initialize().then(() => {
 			setTimeout(() => {
 				this.onLoaded()
-				this.handleMouseMove()
-				// this.setMouseInput()
+				// this.handleMouseMove()
+				this.setMouseInput()
 				this.handleResize()
 
 			}, 300)
 		})
 	}
+
+	componentDidUpdate(newProps) {
+		const {
+			mouseInput,
+		} = this.refs;
+
+		const {
+			windowWidth,
+			windowHeight,
+		} = this.props;
+
+		if (windowWidth !== newProps.windowWidth || windowHeight !== newProps.windowHeight) {
+			mouseInput.containerResized();
+		}
+	}
+
 
 	/* custom Function  */
 
@@ -50,17 +69,38 @@ class Image extends React.Component {
 		});
 	}
 
+	setMouseInput() {
+		const {
+			mouseInput,
+			container
+		} = this.refs;
+
+		if (!mouseInput.isReady()) {
+			const {
+				scene,
+				camera,
+			} = this.refs;
+
+			mouseInput.ready(scene, container, camera);
+			// mouseInput.restrictIntersections(imageMesh);
+			mouseInput.setActive(false);
+		}
+	}
+
 	handleResize() {
 		window.addEventListener('resize', this.onResize, false)
 	}
 
-	handleMouseMove() {
-		window.addEventListener('mousemove', this.onMoveMouse, false)
-		}
-
+	handleMouseEnter(e) {
+		this.flagEnter = true
+	}
+	handleMouseLeave(e) {
+		this.flagEnter = false
+	}
 
 	handleAnimate() {
-		this.onUpdateTime()
+		if (this.flagEnter) this.onPlayTime()
+		if (!this.flagEnter) this.onRewindTime()
 	}
 
 	loadTexture() {
@@ -73,11 +113,10 @@ class Image extends React.Component {
 		}
 	}
 
-
 	render() {
 		const {loading, width, height, cameraPosition, elapsed, duration, mouse} = this.props
 
-		if (loading) return(<h2>Loading...</h2>)
+		if (loading) return(<h2 className="loader"></h2>)
 
 		return(
 			<div ref="container">
@@ -89,6 +128,11 @@ class Image extends React.Component {
 					clearColor={0xffffff}
 					antialias={true}
 				>
+					<module
+						ref="mouseInput"
+						descriptor={MouseInput}
+					/>
+
 					<scene
 						ref="scene"
 					>
@@ -119,6 +163,8 @@ class Image extends React.Component {
 						{/* Image Mesh */}
 						<mesh
 							ref='imageMesh'
+							onMouseEnter={(e) => this.handleMouseEnter(e)}
+							onMouseLeave={(e) => this.handleMouseLeave(e)}
 						>
 							<planeGeometry
 								width={1}
@@ -133,7 +179,7 @@ class Image extends React.Component {
 								<uniforms>
 									<uniform name={'colorMap'} type={'t'} value={this.textures['main'].texture} />
 									<uniform name={'noiseMap'} type={'t'} value={this.textures['noise'].texture} />
-									<uniform name={'time'} type={'f'} value={elapsed} />
+									<uniform name={'elapsed'} type={'f'} value={elapsed} />
 									<uniform name={'scroll'} type={'f'} value={scroll} />
 									<uniform name={'duration'} type={'f'} value={duration} />
 									<uniform name={'mouse'} type={'vec2'} value={mouse} />
