@@ -6,7 +6,7 @@ import webpackConfig from './webpack.config.babel';
 import config from './config'
 
 
-webpackConfig.devtool = 'inline-source-map';
+webpackConfig.devtool = '#inline-source-map';
 
 webpackConfig.plugins.push(
     new CleanWebpackPlugin([config.dirs.dest])

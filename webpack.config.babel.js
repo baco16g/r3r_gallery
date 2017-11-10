@@ -7,7 +7,7 @@ import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import config from './config'
 
 export default {
-	devtool: 'inline-source-map',
+	devtool: '#inline-source-map',
 
 	context: path.join(__dirname, config.dirs.src),
 

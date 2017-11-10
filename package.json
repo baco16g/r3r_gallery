@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server --watch-poll --host 0.0.0.0 --port 3000 --inline --hot --progress --colors --config webpack.config.dev.babel.js",
+    "dev": "NODE_ENV=dev webpack-dev-server --watch-poll --host 0.0.0.0 --port 3000 --hot --progress --colors --config webpack.config.dev.babel.js",
     "build": "NODE_ENV=production webpack --progress --colors --config webpack.config.build.babel.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
