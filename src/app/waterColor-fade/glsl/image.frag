@@ -10,8 +10,8 @@ void main(){
 
 	float sefloat = duration - min(exp(elapsed) * 0.3, duration);
 
-	float gradientStep = sefloat * 0.03;
-	float advectStep = sefloat * 0.03;
+	float gradientStep = sefloat * 0.05;
+	float advectStep = sefloat * 0.05;
 
 	vec4 cxp = texture2D(noiseMap, vec2(tc.x + gradientStep, tc.y));
 	vec4 cxn = texture2D(noiseMap, vec2(tc.x - gradientStep, tc.y));

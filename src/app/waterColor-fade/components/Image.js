@@ -21,7 +21,7 @@ class Image extends React.Component {
 
 		this.textures = {
 			"main": {
-				url: "../assets/img/waterColor/model_02.jpg"
+				url: "../assets/img/waterColor/sunflower.jpg"
 			},
 			"noise": {
 				url: "../assets/img/waterColor/noise.png"
