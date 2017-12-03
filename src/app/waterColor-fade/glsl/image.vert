@@ -1,10 +1,7 @@
-varying vec2 tc;
-varying vec4 vcolor;
-attribute vec3 color;
+varying vec2 vUv;
 
 void main() {
-  tc = uv;
-  vcolor = vec4(color, 1.0);
+  vUv = uv;
   vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
   gl_Position = projectionMatrix * mvPosition;
 }
